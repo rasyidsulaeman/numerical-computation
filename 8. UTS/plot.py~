@@ -1,0 +1,23 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+orde = [3,5,8,9]
+filename = ['dataorde'+ str(i) + '.dat' for i in orde]
+data = [pd.read_csv(filename[i], header=None) for i in range(len(orde))]
+a = data[0].iloc[:,0].values
+print(a)
+
+def plots(x, fx, filename):
+    plt.figure(figsize=(10,8))
+    plt.plot(x, fx, legend=filename)
+    plt.xlabel('t(s)')
+    plt.ylabel('v(km/h)')
+    plt.show()
+    plt.savefig(filename[:-3]+'.png')
+
+# for i in range(len(orde)):
+#     xdata = data[i].iloc[:,0].values
+#     ydata = data[i].iloc[:,1].values
+#     
+#     plot(xdata,ydata,filename[i])
+
